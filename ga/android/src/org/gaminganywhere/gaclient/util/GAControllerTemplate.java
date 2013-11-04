@@ -16,25 +16,29 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifndef __GA_HOOK_GL_H__
-#define __GA_HOOK_GL_H__
+package org.gaminganywhere.gaclient.util;
 
-#ifdef __APPLE__
-#include <OpenGL/gl.h>
-#else
-#include <GL/gl.h>
-#endif
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-typedef void	(*t_glFlush)(void);
-#ifdef __cplusplus
+public class GAControllerTemplate extends GAController {
+	
+	GAControllerTemplate(Context context) {
+		super(context);
+	}
+
+	@Override
+	public void onDimensionChange(int width, int height) {
+		// must be called first
+		super.onDimensionChange(width,  height);
+		// TODO: initialized and add your controls here
+	}
+	
+	@Override
+	public boolean onTouch(View v, MotionEvent evt) {
+		// TODO: add your handler to touch event here
+		// must be called last
+		return super.onTouch(v, evt);
+	}
 }
-#endif
-
-extern t_glFlush	old_glFlush;
-
-void hook_glFlush();
-
-#endif
