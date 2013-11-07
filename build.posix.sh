@@ -5,8 +5,9 @@ GAPATH=`pwd`
 popd > /dev/null
 
 export GADEPS=$GAPATH/deps.posix
-export PKG_CONFIG_PATH=$GADEPS/lib/pkgconfig:/opt/local/lib/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig/:/usr/lib/pkgconfig:/usr/local/Cellar/ffmpeg/1.2.4/lib/pkgconfig/:/usr/local/Cellar/sdl2/2.0.0/lib/pkgconfig/:/usr/local/Cellar/sdl2_ttf/2.0.12/lib/pkgconfig/
+export PKG_CONFIG_PATH=$GADEPS/lib/pkgconfig:/opt/local/lib/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig/:/usr/lib/pkgconfig:/usr/local/lib/pkgconfig
 export PATH=$GADEPS/bin:$PATH
+export EXTRACFLAGS="-I/usr/local/include" # Fix needed to compile on OS X Mavericks, because of incorrect SDL pkgconfig in homebrew
 
 cd $GAPATH
 
