@@ -4,7 +4,7 @@ MODE	?= debug
 all:
 	android update project -p .
 	ndk-build
-	ant $(MODE)
+	ant -Dsdk.dir=$(ANDROID_HOME) $(MODE)
 
 clean:
 	android update project -p .
